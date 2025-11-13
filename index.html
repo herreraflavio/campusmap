@@ -102,9 +102,13 @@
       .brand .logo {
         width: 32px;
         height: 32px;
-        border-radius: 9px;
-        background: linear-gradient(135deg, var(--ucm-blue), #003d61);
-        box-shadow: inset 0 0 0 2px #0b2234;
+
+        /* background: linear-gradient(135deg, var(--ucm-blue), #003d61); */
+        background-image: url("./website_icons/mapicon.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        /* box-shadow: inset 0 0 0 2px #0b2234; */
       }
       .nav-links {
         display: flex;
@@ -152,6 +156,7 @@
           grid-template-columns: 1fr auto;
           justify-items: stretch;
           text-align: left;
+          padding: 16px;
         }
         .nav-links {
           justify-content: flex-end;
@@ -358,6 +363,30 @@
         margin-left: 8px;
         cursor: pointer;
       }
+
+      .card-coming-soon {
+        position: relative;
+        overflow: hidden; /* keeps overlay nicely clipped to card radius */
+      }
+
+      .card-coming-soon::after {
+    content: "Coming soon";
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 2.85rem;
+    text-align: center;
+    backdrop-filter: blur(1px);
+    pointer-events: auto;
+    color: white;
+    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+      }
     </style>
   </head>
 
@@ -366,15 +395,10 @@
       <div class="container nav">
         <div class="brand">
           <div class="logo" aria-hidden="true"></div>
-          <div>
-            UC Merced Events Map
-            <span style="font-weight: 600; color: var(--muted)"
-              >· student-run</span
-            >
-          </div>
+          <div>UC Merced Events Map</div>
         </div>
         <nav class="nav-links" aria-label="Primary">
-          <a href="#map">Map</a>
+          <a href="#map-scroll-too">Map</a>
           <a href="#submit">Submit</a>
           <a href="#about">About</a>
           <a href="#contact" class="btn btn-primary">Contact</a>
@@ -386,6 +410,7 @@
       <!-- Hero -->
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-inner">
+          <div id="map-scroll-too"></div>
           <h1 id="hero-title">
             Find what’s happening on campus — today and this week.
           </h1>
@@ -394,7 +419,7 @@
             campus map below.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#map">Open the map</a>
+            <a class="btn btn-primary" href="#map-scroll-too">Open the map</a>
             <a class="btn btn-outline" href="#submit">Submit an event</a>
           </div>
         </div>
@@ -448,7 +473,48 @@
           </ul>
         </article>
 
-        <aside id="submit" class="card" aria-labelledby="submit-title">
+        <!-- <aside id="submit" class="card" aria-labelledby="submit-title">
+          <h2 id="submit-title">Submit an event</h2>
+          <p>
+            Have something to share? Send us the details and we’ll add it
+            quickly.
+          </p>
+          <ol class="list">
+            <li>Event title, date/time, and a short description.</li>
+            <li>
+              Host/organization and location (building/room or outdoor spot).
+            </li>
+            <li>Optional: a link for RSVPs or more info.</li>
+          </ol>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              flex-wrap: wrap;
+              margin-top: 10px;
+              justify-content: center;
+            "
+          >
+            <a
+              class="btn btn-primary"
+              href="https://forms.gle/your-google-form"
+              target="_blank"
+              rel="noopener"
+              >Google Form</a
+            >
+            <a
+              class="btn btn-outline"
+              href="mailto:events@ucmstudents.example?subject=Submit%20an%20event"
+              >Email us</a
+            >
+          </div>
+        </aside> -->
+
+        <aside
+          id="submit"
+          class="card card-coming-soon"
+          aria-labelledby="submit-title"
+        >
           <h2 id="submit-title">Submit an event</h2>
           <p>
             Have something to share? Send us the details and we’ll add it
@@ -490,12 +556,12 @@
       <section id="contact" class="card" aria-labelledby="contact-title">
         <h2 id="contact-title">Contact</h2>
         <p style="text-align: center; max-width: 60ch; margin: 0 auto 6px">
-          Questions, corrections, or takedown requests? Reach the student team
-          below.
+          Questions, corrections, or takedown requests? Reach me below.
         </p>
         <p style="text-align: center">
-          <strong>Email:</strong> events@ucmstudents.example &nbsp;•&nbsp;
-          <strong>Instagram:</strong> <a href="#">@ucm.events</a>
+          <strong>Email:</strong> fherrera11@ucmerced.edu &nbsp;•&nbsp;
+          <strong>Instagram:</strong>
+          <a href="https://www.instagram.com/ucmcampusmap/">@ucmcampusmap</a>
         </p>
       </section>
     </main>
@@ -533,7 +599,7 @@
           document.body.classList.remove("fullscreen-open");
           icon.src = "./fullscreen_icons/full_screen.png";
           // mapSection.scrollIntoView({ behavior: "smooth", block: "start" });
-          window.scrollTo("#map");
+          window.scrollTo("#map-scroll-too");
         }
       }
     </script>
