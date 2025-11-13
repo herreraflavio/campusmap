@@ -210,6 +210,7 @@
         padding: 10px 14px;
         border-bottom: 1px solid var(--border);
         text-align: center;
+        position: relative;
       }
       .map-title {
         font-weight: 800;
@@ -220,6 +221,23 @@
         min-height: clamp(320px, 60vh, 680px);
         border: 0;
         display: block;
+      }
+      .map-embed-fullscreen {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+      }
+
+      .map-card-fullscreen {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background: var(--surface);
+
+        border-radius: 0px;
+
+        overflow: hidden;
       }
       @media (min-width: 900px) {
         .map-header {
@@ -313,12 +331,18 @@
         outline-offset: 2px;
         border-radius: 10px;
       }
+
+      .full_screen_icon {
+        width: 15px;
+        height: 15px;
+        display: block;
+        margin: 5px;
+        cursor: pointer;
+      }
     </style>
   </head>
 
   <body>
-    <a class="sr-only" href="#map">Skip to map</a>
-
     <header class="site-header">
       <div class="container nav">
         <div class="brand">
@@ -359,15 +383,29 @@
 
       <!-- Map embed (swap the src with your production map URL) -->
       <section id="map" class="map-section" aria-labelledby="map-title">
-        <div class="map-card">
+        <div class="map-card" id="map-card">
           <div class="map-header">
             <div class="map-title" id="map-title">UC Merced Campus Map</div>
-            <div style="color: var(--muted); font-size: 0.9rem">
-              Tip: pinch/scroll to zoom • drag to pan
+
+            <div style="display: flex; align-items: center">
+              <div style="color: var(--muted); font-size: 0.9rem">
+                Pinch/Scroll to Zoom • Drag to Pan • Full Screen
+              </div>
+
+              <img
+                src="./fullscreen_icons/full_screen.png"
+                id="full_screen_icon"
+                class="full_screen_icon"
+                onclick="fullScreen()"
+                alt=""
+              />
             </div>
           </div>
           <iframe
             class="map-embed"
+            id="myMap"
+            style="width: 100%"
+            height="100%"
             title="Embedded campus events map"
             src="https://dev-campusmap.flavioherrera.com/share/69011d808d37778a2881c809"
             loading="lazy"
@@ -462,6 +500,60 @@
 
     <!-- No JS required for the landing page. Remove this block if unused. -->
     <script>
+      isInFullScreen = false;
+      function fullScreen() {
+        if (!isInFullScreen) {
+          document.getElementById("map").style.height = "100vh";
+          document.getElementById("map").style.width = "100vw";
+          document.getElementById("map").style.position = "absolute";
+          document.getElementById("map").style.top = "0";
+          document.getElementById("map").style.left = "0";
+          document.getElementById("map").style.zIndex = "999";
+          document.getElementById("map").style.margin = "0px";
+          const element = document.getElementById("myMap"); // Get the DIV element
+          element.classList.remove("map-embed"); // Remove mystyle class from DIV
+          element.classList.add("map-embed-fullscreen"); // Add newone class to DIV
+          document.body.style.overflow = "hidden";
+
+          const element2 = document.getElementById("map-card"); // Get the DIV element
+          element2.classList.remove("map-card"); // Remove mystyle class from DIV
+          element2.classList.add("map-card-fullscreen"); // Add newone class to DIV
+
+          // document.getElementById("map-card").style.height = "100%";
+          // document.getElementById("map-card").style.display = "flex";
+          // document.getElementById("map-card").style.flexDirection = "column";
+
+          window.scrollTo(0, 0);
+
+          document.getElementById("full_screen_icon").src =
+            "./fullscreen_icons/exit_full_screen.png";
+          isInFullScreen = true;
+        } else {
+          document.getElementById("map").style.height = "100%";
+          document.getElementById("map").style.width = "100%";
+          document.getElementById("map").style.position = "relative";
+          document.getElementById("map").style.top = "0";
+          document.getElementById("map").style.left = "0";
+          document.getElementById("map").style.zIndex = "0";
+          document.getElementById("map").style.marginTop = "16px";
+          document.getElementById("map").style.marginBottom = "16px";
+
+          const element = document.getElementById("myMap"); // Get the DIV element
+          element.classList.remove("map-embed-fullscreen"); // Remove mystyle class from DIV
+          element.classList.add("map-embed"); // Add newone class to DIV
+
+          const element2 = document.getElementById("map-card"); // Get the DIV element
+          element2.classList.remove("map-card-fullscreen"); // Remove mystyle class from DIV
+          element2.classList.add("map-card"); // Add newone class to DIV
+
+          document.body.style.overflow = "scroll";
+
+          document.getElementById("full_screen_icon").src =
+            "./fullscreen_icons/full_screen.png";
+          window.scrollTo("#map");
+          isInFullScreen = false;
+        }
+      }
       // Optional: smooth-scroll fallback for older browsers
       // document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click', e=>{
       //   const id = a.getAttribute('href').slice(1);
