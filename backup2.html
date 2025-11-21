@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>UC Merced Campus Events Map</title>
+    <title>UC Merced — Student-Run Campus Events Map</title>
     <meta name="theme-color" content="#ffffff" />
 
     <meta
       name="description"
-      content="An interactive UC Merced campus map featuring real-time events, building information, and turn-by-turn walking directions."
+      content="An interactive UC Merced campus map featuring real-time student events, building information, and turn-by-turn walking directions."
     />
     <link rel="canonical" href="https://ucmercedhub.com/" />
     <meta name="robots" content="index,follow" />
@@ -34,7 +34,10 @@
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ucmercedhub.com/" />
-    <meta property="og:title" content="UC Merced Campus Events Map" />
+    <meta
+      property="og:title"
+      content="UC Merced — Student-Run Campus Events Map"
+    />
     <meta
       property="og:description"
       content="Navigate UC Merced with ease. Find real-time events, locate buildings, and get turn-by-turn directions."
@@ -45,7 +48,10 @@
     />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="UC Merced Campus Events Map" />
+    <meta
+      name="twitter:title"
+      content="UC Merced — Student-Run Campus Events Map"
+    />
     <meta
       name="twitter:description"
       content="Navigate UC Merced with ease. Find real-time events, locate buildings, and get turn-by-turn directions."
@@ -341,7 +347,6 @@
         border-radius: 18px;
         box-shadow: var(--shadow);
         padding: 18px;
-        margin-bottom: 16px;
       }
       .card h2 {
         margin: 0 0 6px;
@@ -370,7 +375,7 @@
       footer {
         border-top: 1px solid var(--border);
         background: linear-gradient(0deg, #eef2f7, #ffffff);
-        /* margin-top: 24px; */
+        margin-top: 24px;
       }
       .foot-inner {
         padding: 18px 0 36px;
@@ -453,7 +458,7 @@
         </div>
         <nav class="nav-links" aria-label="Primary">
           <a href="#map-scroll-too">Map</a>
-
+          <a href="#submit">Submit</a>
           <a href="#about">About</a>
           <a href="#contact" class="btn btn-primary">Contact</a>
         </nav>
@@ -466,9 +471,16 @@
         <div class="hero-inner">
           <div id="map-scroll-too"></div>
           <h1 id="hero-title">
-            Find what's happening on campus - today and this week.
+            Find what’s happening on campus — today and this week.
           </h1>
-          <p>Explore events on the interactive campus map below.</p>
+          <p>
+            Student-made and student-run. Explore events on the interactive
+            campus map below.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#map-scroll-too">Open the map</a>
+            <a class="btn btn-outline" href="#submit">Submit an event</a>
+          </div>
         </div>
       </section>
 
@@ -476,7 +488,7 @@
       <section id="map" class="map-section" aria-labelledby="map-title">
         <div class="map-card">
           <div class="map-header">
-            <div class="map-title" id="map-title">UC Merced Events Map</div>
+            <div class="map-title" id="map-title">UC Merced Campus Map</div>
 
             <div style="display: flex; align-items: center">
               <div style="color: var(--muted); font-size: 0.9rem">
@@ -505,18 +517,98 @@
       </section>
 
       <!-- Info + Submit -->
-      <section class="card" id="about" aria-labelledby="about-title">
-        <h2 id="about-title">About this site</h2>
-        <p>
-          This is a hub for UC Merced events. It's not an official university
-          site. Our goal is to make it simple to see what's going on around
-          campus at a glance.
-        </p>
-        <ul class="list">
-          <li>Mobile-first, fast, and accessible.</li>
-          <li>Map view shows every event from Presence.</li>
-          <li>Open to all student orgs, departments, and teams.</li>
-        </ul>
+      <section class="grid">
+        <article id="about" class="card" aria-labelledby="about-title">
+          <h2 id="about-title">About this site</h2>
+          <p>
+            This is a student-run hub for UC Merced events. It’s not an official
+            university site. Our goal is to make it simple to see what’s going
+            on around campus at a glance.
+          </p>
+          <ul class="list">
+            <li>Mobile-first, fast, and accessible.</li>
+            <li>Map view shows every event we’ve received.</li>
+            <li>Open to all student orgs, departments, and teams.</li>
+          </ul>
+        </article>
+
+        <!-- <aside id="submit" class="card" aria-labelledby="submit-title">
+          <h2 id="submit-title">Submit an event</h2>
+          <p>
+            Have something to share? Send us the details and we’ll add it
+            quickly.
+          </p>
+          <ol class="list">
+            <li>Event title, date/time, and a short description.</li>
+            <li>
+              Host/organization and location (building/room or outdoor spot).
+            </li>
+            <li>Optional: a link for RSVPs or more info.</li>
+          </ol>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              flex-wrap: wrap;
+              margin-top: 10px;
+              justify-content: center;
+            "
+          >
+            <a
+              class="btn btn-primary"
+              href="https://forms.gle/your-google-form"
+              target="_blank"
+              rel="noopener"
+              >Google Form</a
+            >
+            <a
+              class="btn btn-outline"
+              href="mailto:events@ucmstudents.example?subject=Submit%20an%20event"
+              >Email us</a
+            >
+          </div>
+        </aside> -->
+
+        <aside
+          id="submit"
+          class="card card-coming-soon"
+          aria-labelledby="submit-title"
+        >
+          <h2 id="submit-title">Submit an event</h2>
+          <p>
+            Have something to share? Send us the details and we’ll add it
+            quickly.
+          </p>
+          <ol class="list">
+            <li>Event title, date/time, and a short description.</li>
+            <li>
+              Host/organization and location (building/room or outdoor spot).
+            </li>
+            <li>Optional: a link for RSVPs or more info.</li>
+          </ol>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              flex-wrap: wrap;
+              margin-top: 10px;
+              justify-content: center;
+            "
+          >
+            <a
+              class="btn btn-primary"
+              href="https://forms.gle/your-google-form"
+              target="_blank"
+              rel="noopener"
+              >Google Form</a
+            >
+            <a
+              class="btn btn-outline"
+              href="mailto:events@ucmstudents.example?subject=Submit%20an%20event"
+              >Email us</a
+            >
+          </div>
+        </aside>
       </section>
 
       <!-- Contact -->
@@ -526,7 +618,9 @@
           Questions, corrections, or takedown requests? Reach me below.
         </p>
         <p style="text-align: center">
-          <strong>Email:</strong> fherrera11@ucmerced.edu
+          <strong>Email:</strong> fherrera11@ucmerced.edu &nbsp;•&nbsp;
+          <strong>Instagram:</strong>
+          <a href="https://www.instagram.com/ucmcampusmap/">@ucmcampusmap</a>
         </p>
       </section>
     </main>
@@ -535,12 +629,12 @@
       <div class="ucm-bar"></div>
       <div class="container foot-inner">
         <p class="disclaimer">
-          Unofficial project. UC Merced name and colors used for identification
-          only.
+          Unofficial student project. UC Merced name and colors used for
+          identification only.
         </p>
         <p>
-          Made by MapUCMerced • Map data © contributors of the respective
-          embedded map.
+          Made by students • Map data © contributors of the respective embedded
+          map.
         </p>
       </div>
     </footer>
@@ -563,6 +657,7 @@
           mapSection.classList.remove("fullscreen");
           document.body.classList.remove("fullscreen-open");
           icon.src = "./fullscreen_icons/full_screen.png";
+          // mapSection.scrollIntoView({ behavior: "smooth", block: "start" });
           window.scrollTo("#map-scroll-too");
         }
       }
